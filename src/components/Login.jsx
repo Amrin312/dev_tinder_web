@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
-import { addUser } from "../slice/userSlice";
+import { addUser } from "../utils/userSlice";
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
@@ -20,11 +20,10 @@ const Login = () => {
             );
             
             dispatch(addUser(res.data));
-            navigate('/profile');
+            navigate('/feed');
 
         }catch(err){
             console.log(err.message);
-            
         }
     }
 
