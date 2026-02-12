@@ -7,7 +7,6 @@ import { removeUser } from '../utils/userSlice';
 
 const Navbar = () => {
     const user = useSelector(state => state.user);
-    console.log(user);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -24,7 +23,7 @@ const Navbar = () => {
     
     
   return (
-    <div className="navbar bg-base-300 shadow-sm">
+    <div className="navbar bg-base-300 shadow-sm sticky top-0 z-50">
         <div className="flex-1">
             <Link to="/" className="btn btn-ghost text-xl">🧑‍💻 DevTinder</Link>
         </div>
