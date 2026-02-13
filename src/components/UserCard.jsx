@@ -5,8 +5,7 @@ const UserCard = ({ user }) => {
     const {firstName, lastName, age, gender, about, photoUrl} = user;
 
   return (
-    <div>
-        <div className="card bg-base-300 w-96 shadow-sm">
+        <div className="card bg-base-300 w-full md:w-1/4 shadow-sm">
             <figure>
                 <img
                 src={photoUrl ? photoUrl : 'https://www.kindpng.com/picc/m/252-2524695_dummy-profile-image-jpg-hd-png-download.png'}
@@ -24,7 +23,6 @@ const UserCard = ({ user }) => {
                 </div>
             </div>
         </div>
-    </div>
   )
 }
 

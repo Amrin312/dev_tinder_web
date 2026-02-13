@@ -9,6 +9,8 @@ const EditProfile = ({ userData }) => {
     photoUrl: '',
     age: '',
     gender: '',
+    bio: '',
+    skills: [],
     about: '',
   });
 
@@ -29,55 +31,94 @@ const EditProfile = ({ userData }) => {
 
 
   return (
-    <div className='flex gap-2'>
-
-        <div className='flex items-center justify-center'>
-            <div className="card card-border bg-base-300 w-96">
+    <div className='flex flex-col md:flex-row gap-10 w-full'>
+        <div className='flex w-full md:w-3/4'>
+            <div className="card card-border bg-base-300 w-full">
                 <div className="card-body">
-                    <h2 className="card-title text-center">Edit Profile</h2>
+                    <h2 className="card-title text-center mb-5">Edit Profile</h2>
 
                     <div>
-                        <fieldset className="fieldset">
-                            <legend className="fieldset-legend">First Name:</legend>
-                            <input type="text" name="firstName" className="input" value={user.firstName} onChange={handleChange} placeholder="Enter First Name" />
-                        </fieldset>
+                        {/* <div className="flex flex-wrap mb-6">
+                            <input type="file" name="" className="input" id="" />
+                        </div> */}
+                        
+                        <div class="flex flex-wrap -mx-3 mb-6">
+                            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                                <label class="block tracking-wide text-white text-xs font-bold mb-2" for="grid-first-name">
+                                    First Name
+                                </label>
+                                <input type="text" name="firstName" className="input w-full" value={user.firstName} onChange={handleChange} placeholder="Enter First Name" />
+                                
+                            </div>
+                            <div class="w-full md:w-1/2 px-3">
+                                <label class="block tracking-wide text-white text-xs font-bold mb-2" for="grid-last-name">
+                                    Last Name
+                                </label>
+                                <input type="text" name="lastName" className="input w-full" value={user.lastName} onChange={handleChange}  placeholder="Enter Last Name" />
+                            </div>
+                        </div>
 
-                        <fieldset className="fieldset">
-                            <legend className="fieldset-legend">Last Name:</legend>
-                            <input type="text" name="lastName" className="input" value={user.lastName} onChange={handleChange}  placeholder="Enter Last Name" />
-                        </fieldset>
+                        <div class="flex flex-wrap -mx-3 mb-6">
+                            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                                <label class="block tracking-wide text-white text-xs font-bold mb-2" for="grid-first-name">
+                                    Age
+                                </label>
+                                <input type="number" name="age" className="input w-full" value={user.age} onChange={handleChange} placeholder="Enter age" />
+                                
+                            </div>
+                            <div class="w-full md:w-1/2 px-3">
+                                <label class="block tracking-wide text-white text-xs font-bold mb-2" for="grid-last-name">
+                                    Last Name
+                                </label>
 
-                        <fieldset className="fieldset">
-                            <legend className="fieldset-legend">Photo URL:</legend>
-                            <input type="text" name="photoUrl" className="input" value={user.photoUrl} onChange={handleChange}  placeholder="Enter Photo URL" />
-                        </fieldset>
+                                <select name="gender" className="select w-full" id="gender" onChange={handleChange}>
+                                    <option value="">Select Gender</option>
+                                    <option value="">Male</option>
+                                    <option value="">Female</option>
+                                    <option value="">Others</option>
+                                </select>
+                            </div>
+                        </div>
 
-                        <fieldset className="fieldset">
-                            <legend className="fieldset-legend">Age:</legend>
-                            <input type="text" name="age" className="input" value={user.age} onChange={handleChange}  placeholder="Enter Age" />
-                        </fieldset>
+                        <div class="flex flex-wrap -mx-3 mb-6">
+                            <div class="w-full px-3">
+                                <label class="block tracking-wide text-white text-xs font-bold mb-2" for="grid-password">
+                                    Headline
+                                </label>
+                                <input type="text" name="bio" className="input w-full" value={user.age} onChange={handleChange} placeholder="Enter age" />
+                            </div>
+                        </div>
 
-                        <fieldset className="fieldset">
-                            <legend className="fieldset-legend">Gender:</legend>
-                            <input type="text" name="gender" className="input" value={user.gender} onChange={handleChange}  placeholder="Enter Gender" />
-                        </fieldset>
+                        <div class="flex flex-wrap -mx-3 mb-6">
+                            <div class="w-full px-3">
+                                <label class="block tracking-wide text-white text-xs font-bold mb-2" for="grid-password">
+                                    Skills
+                                </label>
+                                <input type="text" name="bio" className="input w-full" value={user.age} onChange={handleChange} placeholder="Enter Skills" />
+                            </div>
+                        </div>
 
-                        <fieldset className="fieldset">
-                            <legend className="fieldset-legend">About:</legend>
-                            <input type="text" name="about" className="input" value={user.about} onChange={handleChange}  placeholder="Enter About" />
-                        </fieldset>
+                        <div class="flex flex-wrap -mx-3 mb-6">
+                            <div class="w-full px-3">
+                                <label class="block tracking-wide text-white text-xs font-bold mb-2" for="grid-password">
+                                    About
+                                </label>
+                                <textarea name="bio" rows="5" className="textarea w-full" value={user.age} onChange={handleChange} placeholder="Enter About"> </textarea>
+                            </div>
+                        </div>
+
+
+                       
 
                         <div className="card-actions justify-end mt-3">
-                        <button className="btn btn-primary btn-block" onClick={handleSubmit}>Save Profile</button>
+                            <button className="btn btn-primary btn-block" onClick={handleSubmit}>Save Profile</button>
                         </div>
                     </div>
             
                 </div>
             </div>
         </div>
-
         <UserCard user={user} />
-
     </div>
   )
 }

@@ -38,7 +38,7 @@ const Body = () => {
   return (
     <div >
         <Navbar />
-        <div className="flex-grow flex justify-center py-5">
+        <div className="flex-grow flex justify-center mx-5 md:mx-10 py-5 md:py-10">
           <Outlet />
         </div>
         <Footer />
