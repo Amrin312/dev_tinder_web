@@ -1,22 +1,26 @@
 import React from 'react'
 
 const UserCard = ({ user }) => {
-    console.log(user.photoUrl);
-    
+
+    const {firstName, lastName, age, gender, about, photoUrl} = user;
+
   return (
     <div>
         <div className="card bg-base-300 w-96 shadow-sm">
             <figure>
                 <img
-                src={user?.photoUrl}
+                src={photoUrl ? photoUrl : 'https://www.kindpng.com/picc/m/252-2524695_dummy-profile-image-jpg-hd-png-download.png'}
                 alt="Shoes" />
             </figure>
             <div className="card-body">
-                <h2 className="card-title">{ user?.firstName }</h2>
-               {user.age && user.gender ? `${user.age} • ${user.gender}` : ''}
-                <p>{ user?.about }</p>
+                <h2 className="card-title">{`${firstName} ${lastName}`}</h2>
+                <p>{about}</p>
+                {gender && age && <p>{`${age} ${gender}`}</p>}
+
                 <div className="card-actions justify-end">
-                <button className="btn btn-primary">Buy Now</button>
+                    <button className="btn btn-primary">Ignore</button>
+                    <button className="btn btn-primary">Intrested</button>
+
                 </div>
             </div>
         </div>

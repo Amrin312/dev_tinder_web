@@ -4,11 +4,11 @@ import EditProfile from './EditProfile';
 
 const Profile = () => {
 
-  const userData = useSelector((store) => store.user);
+  const user = useSelector((store) => store.user);
   
   return (
     <div>
-      <EditProfile userData={userData} />
+      {user && <EditProfile user={user} />}
     </div>
   )
 }
