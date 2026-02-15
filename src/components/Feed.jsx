@@ -28,7 +28,7 @@ const Feed = () => {
   console.log(feed);
 
   return (
-    <div>
+    <div className='w-full md:w-1/3'>
       {feed && ( <UserCard user = {feed[0]}  /> ) }
     </div>
   )

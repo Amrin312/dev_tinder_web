@@ -36,11 +36,11 @@ const Body = () => {
   }, []);
 
   return (
-    <div >
+    <div className="min-h-screen flex flex-col">
         <Navbar />
-        <div className="flex-grow flex justify-center mx-5 md:mx-10 py-5 md:py-10">
+        <main className="flex-grow flex justify-center mx-5 md:mx-10 py-5 md:py-10">
           <Outlet />
-        </div>
+        </main>
         <Footer />
     </div>
   )

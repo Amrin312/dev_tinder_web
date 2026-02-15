@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import UserCard from './UserCard';
+import axios from 'axios';
+import { BASE_URL } from '../utils/constants'
+import { useDispatch } from 'react-redux';
+import toast from 'react-hot-toast';
 
 const EditProfile = ({ userData }) => {
+    // console.log(userData);
+  const dispatch = useDispatch();
+  const [userId, setUserId] = useState(null);
 
   const [user, setUser] = useState({
     firstName: '',
@@ -16,16 +23,36 @@ const EditProfile = ({ userData }) => {
 
   useEffect(() => {
     if (userData) {
-      setUser(userData);
+        setUserId(userData._id);
+        setUser({
+            firstName: userData.firstName || '',
+            lastName: userData.lastName || '',
+            photoUrl: userData.photoUrl || '',
+            age: userData.age || '',
+            gender: userData.gender || '',
+            bio: userData.bio || '',
+            skills: userData.skills || '',
+            about: userData.about || ''
+        });
     }
-  }, [userData]);
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUser(user => ({ ...user, [name]: value}));
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+
+    try{
+        console.log(user);
+        
+        const res =  await axios.patch(`${BASE_URL}/profile/edit/${userId}`, user, { withCredentials: true } );
+        dispatch(res.data);
+        toast.success('Profile updated successfully!');
+    }catch(err){
+        console.log(err.message);
+    }
 
   };
 
@@ -42,68 +69,68 @@ const EditProfile = ({ userData }) => {
                             <input type="file" name="" className="input" id="" />
                         </div> */}
                         
-                        <div class="flex flex-wrap -mx-3 mb-6">
-                            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                                <label class="block tracking-wide text-white text-xs font-bold mb-2" for="grid-first-name">
+                        <div className="flex flex-wrap -mx-3 mb-6">
+                            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                                <label className="block tracking-wide text-white text-xs font-bold mb-2" htmlFor="grid-first-name">
                                     First Name
                                 </label>
                                 <input type="text" name="firstName" className="input w-full" value={user.firstName} onChange={handleChange} placeholder="Enter First Name" />
                                 
                             </div>
-                            <div class="w-full md:w-1/2 px-3">
-                                <label class="block tracking-wide text-white text-xs font-bold mb-2" for="grid-last-name">
+                            <div className="w-full md:w-1/2 px-3">
+                                <label className="block tracking-wide text-white text-xs font-bold mb-2" htmlFor="grid-last-name">
                                     Last Name
                                 </label>
                                 <input type="text" name="lastName" className="input w-full" value={user.lastName} onChange={handleChange}  placeholder="Enter Last Name" />
                             </div>
                         </div>
 
-                        <div class="flex flex-wrap -mx-3 mb-6">
-                            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                                <label class="block tracking-wide text-white text-xs font-bold mb-2" for="grid-first-name">
+                        <div className="flex flex-wrap -mx-3 mb-6">
+                            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                                <label className="block tracking-wide text-white text-xs font-bold mb-2" htmlFor="grid-first-name">
                                     Age
                                 </label>
                                 <input type="number" name="age" className="input w-full" value={user.age} onChange={handleChange} placeholder="Enter age" />
                                 
                             </div>
-                            <div class="w-full md:w-1/2 px-3">
-                                <label class="block tracking-wide text-white text-xs font-bold mb-2" for="grid-last-name">
+                            <div className="w-full md:w-1/2 px-3">
+                                <label className="block tracking-wide text-white text-xs font-bold mb-2" htmlFor="grid-last-name">
                                     Last Name
                                 </label>
 
-                                <select name="gender" className="select w-full" id="gender" onChange={handleChange}>
+                                <select name="gender" className="select w-full" id="gender" value={user.gender} onChange={handleChange}>
                                     <option value="">Select Gender</option>
-                                    <option value="">Male</option>
-                                    <option value="">Female</option>
-                                    <option value="">Others</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Others">Others</option>
                                 </select>
                             </div>
                         </div>
 
-                        <div class="flex flex-wrap -mx-3 mb-6">
-                            <div class="w-full px-3">
-                                <label class="block tracking-wide text-white text-xs font-bold mb-2" for="grid-password">
+                        <div className="flex flex-wrap -mx-3 mb-6">
+                            <div className="w-full px-3">
+                                <label className="block tracking-wide text-white text-xs font-bold mb-2" htmlFor="grid-password">
                                     Headline
                                 </label>
-                                <input type="text" name="bio" className="input w-full" value={user.age} onChange={handleChange} placeholder="Enter age" />
+                                <input type="text" name="bio" className="input w-full" value={user.bio} onChange={handleChange} placeholder="Enter Bio" />
                             </div>
                         </div>
 
-                        <div class="flex flex-wrap -mx-3 mb-6">
-                            <div class="w-full px-3">
-                                <label class="block tracking-wide text-white text-xs font-bold mb-2" for="grid-password">
+                        <div className="flex flex-wrap -mx-3 mb-6">
+                            <div className="w-full px-3">
+                                <label className="block tracking-wide text-white text-xs font-bold mb-2" htmlFor="grid-password">
                                     Skills
                                 </label>
-                                <input type="text" name="bio" className="input w-full" value={user.age} onChange={handleChange} placeholder="Enter Skills" />
+                                <input type="text" name="skills" className="input w-full" value={user.skills} onChange={handleChange} placeholder="React Js, Javascript, Node Js" />
                             </div>
                         </div>
 
-                        <div class="flex flex-wrap -mx-3 mb-6">
-                            <div class="w-full px-3">
-                                <label class="block tracking-wide text-white text-xs font-bold mb-2" for="grid-password">
+                        <div className="flex flex-wrap -mx-3 mb-6">
+                            <div className="w-full px-3">
+                                <label className="block tracking-wide text-white text-xs font-bold mb-2" htmlFor="grid-password">
                                     About
                                 </label>
-                                <textarea name="bio" rows="5" className="textarea w-full" value={user.age} onChange={handleChange} placeholder="Enter About"> </textarea>
+                                <textarea name="about" rows="5" className="textarea w-full" value={user.about} onChange={handleChange} placeholder="Enter About"> </textarea>
                             </div>
                         </div>
 
@@ -118,7 +145,11 @@ const EditProfile = ({ userData }) => {
                 </div>
             </div>
         </div>
-        <UserCard user={user} />
+
+        <div className='w-full md:w-1/4'>
+            <UserCard user={user} />
+        </div>
+       
     </div>
   )
 }
