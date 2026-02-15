@@ -15,6 +15,7 @@ const Feed = () => {
     if(feed) return;
     try{
       const res = await axios.get(BASE_URL + '/user/feed', { withCredentials: true });
+      
       dispatch(addFeed(res.data));
     }catch(err){
       console.log(err.message);
@@ -26,6 +27,10 @@ const Feed = () => {
   }, []);
 
   console.log(feed);
+
+  if(!feed) return;
+
+  if(feed.length <= 0) return <h1>No new users found!</h1>
 
   return (
     <div className='w-full md:w-1/3'>
