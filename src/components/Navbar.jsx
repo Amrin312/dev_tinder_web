@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom';
 import { BASE_URL } from '../utils/constants';
 import { removeUser } from '../utils/userSlice';
+import { Sun, Moon } from "lucide-react";
 
 const Navbar = () => {
     const user = useSelector(state => state.user);
@@ -28,6 +29,21 @@ const Navbar = () => {
             <Link to="/" className="btn btn-ghost text-xl">🧑‍💻 DevTinder</Link>
         </div>
         <div className="flex gap-5 items-center mx-4">
+            {
+                !user && (
+                    <div className='flex gap-4 items-center'>
+                        <Link>About</Link>
+                        <Link>Testimonials</Link>
+                        <Link>Contact Us</Link>
+                        <Sun />
+                        <Link to="/login" className='p-2 rounded-xl font-semibold text-white 
+                       bg-gradient-to-r from-sky-400 to-violet-500
+                       hover:from-sky-500 hover:to-violet-600 transition'>Sign Up / Login</Link>
+
+                    </div>
+                )
+            }
+
             { user && 
             (
             <>
