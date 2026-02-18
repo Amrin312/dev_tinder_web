@@ -32,10 +32,10 @@ const Navbar = () => {
             {
                 !user && (
                     <div className='flex gap-4 items-center'>
-                        <Link>About</Link>
+                        {/* <Link>About</Link>
                         <Link>Testimonials</Link>
-                        <Link>Contact Us</Link>
-                        <Sun />
+                        <Link>Contact Us</Link> */}
+                        {/* <Sun /> */}
                         <Link to="/login" className='p-2 rounded-xl font-semibold text-white 
                        bg-gradient-to-r from-sky-400 to-violet-500
                        hover:from-sky-500 hover:to-violet-600 transition'>Sign Up / Login</Link>
