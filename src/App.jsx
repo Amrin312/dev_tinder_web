@@ -8,7 +8,7 @@ import Feed from "./components/Feed"
 import toast, { Toaster } from 'react-hot-toast';
 import Connections from "./components/Connections"
 import Requests from "./components/Requests"
-import Home from "./Pages/Home"
+import Home from "./pages/Home"
 
 
 function App() {
