@@ -33,6 +33,7 @@ const UserCard = ({ user }) => {
       
     }
   }
+console.log(user);
 
 
   const defaultAvatar = "https://www.kindpng.com/picc/m/252-2524695_dummy-profile-image-jpg-hd-png-download.png";
@@ -71,9 +72,20 @@ const UserCard = ({ user }) => {
 
         {about && <p className="text-sm opacity-90">{about}</p>}
 
-        <div className="card-actions justify-end mt-3">
-          <button className="btn btn-primary btn-sm" onClick={() => handleRequests('ignored', _id)}>Ignore</button>
-          <button className="btn btn-secondary btn-sm" onClick={() => handleRequests('interested', _id)}>Interested</button>
+        <div className="card-actions justify-center mt-3">
+          <button className="px-6 py-3 rounded-xl font-semibold text-white
+               bg-gradient-to-r from-red-500 to-rose-600
+               hover:from-red-600 hover:to-rose-700
+               transition-all duration-200
+               shadow-md hover:shadow-lg
+               hover:scale-105 active:scale-95" onClick={() => handleRequests('ignored', _id)}>Ignore</button>
+                       
+          <button className="px-6 py-3 rounded-xl font-semibold text-white
+               bg-gradient-to-r from-emerald-400 to-green-600
+               hover:from-emerald-500 hover:to-green-700
+               transition-all duration-200
+               shadow-md hover:shadow-lg
+               hover:scale-105 active:scale-95" onClick={() => handleRequests('interested', _id)}>Interested</button>
         </div>
 
       </div>

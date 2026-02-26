@@ -30,8 +30,8 @@ const Login = () => {
             navigate('/feed');
 
         }catch(err){
-            // console.log(err.response?.data?.message || err.message);
-            setError(err.response?.data?.message || err.message)
+            console.log(err);
+            setError(err.message)
         }
     }
 
@@ -41,7 +41,9 @@ const Login = () => {
             dispatch(addUser(res.data.data));
             navigate('/profile');
         }catch(err){
-            setError(err.response?.data?.message || err.message)
+            console.log(err);
+            
+            setError(err.message)
         }
     } 
 

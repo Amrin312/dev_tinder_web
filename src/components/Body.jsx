@@ -14,7 +14,10 @@ const Body = () => {
 
   const fetchUser = async () => {
 
-    if(userData) return;
+    if(userData) {
+      navigate('/');
+      return;
+    };
 
     try{
 
