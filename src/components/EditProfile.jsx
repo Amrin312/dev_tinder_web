@@ -91,7 +91,7 @@ const EditProfile = ({ userData }) => {
                     "Content-Type": "multipart/form-data" 
                 }
             });
-        console.log(res);
+        // console.log(res);
 
         dispatch(addUser(res.data));
         
@@ -119,7 +119,7 @@ const EditProfile = ({ userData }) => {
       { withCredentials: true }
     );
 
-    dispatch(addUser(res.data)); // your redux action
+    dispatch(addUser(res.data)); 
     setShowCamera(false);
     toast.success("Photo uploaded!");
 

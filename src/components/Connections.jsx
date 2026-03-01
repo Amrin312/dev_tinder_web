@@ -32,14 +32,14 @@ const Connections = () => {
     }, []);
 
   return (
-    <div className='flex flex-col justify-center w-1/2'>
+    <div className='flex flex-col justify-center w-full md:w-1/2'>
         <h1 className='text-white text-2xl text-center mb-4'>Connections</h1>
 
         {
             connections?.map(connection => {
                 const {firstName, lastName, age, gender, bio, photoUrl, _id} = connection;
                 return (
-                    <div className='flex gap-6 bg-base-300 rounded-lg m-2 px-6 py-4'  key={_id}>
+                    <div className='flex flex-col md:flex-row items-center gap-6 bg-base-300 rounded-lg m-2 px-6 py-4'  key={_id}>
                         <div>
                             <img src={photoUrl || defaultAvatar} className='rounded-full w-20 h-20 ' alt="" />
                         </div>

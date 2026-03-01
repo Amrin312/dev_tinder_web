@@ -5,17 +5,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addRequests, removeRequest } from '../utils/requestSlice';
 
 const Requests = () => {
-    // const [requests, setRequests] = useState([]);
     const requests = useSelector(store => store.requests);
-    console.log(requests);
     
     const dispatch = useDispatch();
     const defaultAvatar = "https://www.kindpng.com/picc/m/252-2524695_dummy-profile-image-jpg-hd-png-download.png";
 
     const getRequests = async () => {
         const res = await axios.get(BASE_URL + '/user/requests', { withCredentials: true });
-        console.log(res.data.connectionRequests);
-        // setRequests(res.data.connectionRequests);
+        
         dispatch(addRequests(res.data.connectionRequests));
     };
 
@@ -33,7 +30,7 @@ const Requests = () => {
     }, []);
 
   return (
-    <div className='flex flex-col  w-1/2'>
+    <div className='flex flex-col w-full md:w-1/2'>
         <h1 className='text-white text-2xl text-center mb-4'>Requests</h1>
 
         {
@@ -46,7 +43,7 @@ const Requests = () => {
             requests?.map(request => {
                 const {firstName, lastName, age, gender, bio, photoUrl, _id} = request.fromId;
                 return (
-                    <div className='flex justify-between gap-8 bg-base-300 rounded-lg m-2 px-6 py-4'  key={_id}>
+                    <div className='flex flex-col md:flex-row items-center justify-between gap-8 bg-base-300 rounded-lg m-2 px-6 py-4'  key={_id}>
                         <div>
                             <img src={photoUrl || defaultAvatar} className='rounded-full w-20 h-20 ' alt="" />
                         </div>
