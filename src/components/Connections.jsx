@@ -7,7 +7,6 @@ import { addConnection } from '../utils/connectionsSlice';
 const Connections = () => {
 
     const connections = useSelector(store => store.connections);
-    console.log(connections);
 
     const defaultAvatar = "https://www.kindpng.com/picc/m/252-2524695_dummy-profile-image-jpg-hd-png-download.png";
 
@@ -17,7 +16,6 @@ const Connections = () => {
 
         try{
             const res = await axios.get(BASE_URL + '/user/connections', { withCredentials: true });
-            console.log(res.data.data);
             dispatch(addConnection(res.data.data));
             
         }catch(err){

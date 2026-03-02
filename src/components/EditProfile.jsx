@@ -11,7 +11,7 @@ import { Camera } from 'lucide-react';
 import { Upload } from 'lucide-react';
 
 const EditProfile = ({ userData }) => {
-    // console.log(userData);
+
   const dispatch = useDispatch();
   const [userId, setUserId] = useState(null);
   const fileRef = useRef(null);
@@ -57,8 +57,6 @@ const EditProfile = ({ userData }) => {
   const handleSubmit = async () => {
 
     try{
-        console.log(user);
-        
         const res =  await axios.patch(`${BASE_URL}/profile/edit/${userId}`, user, { withCredentials: true } );
         dispatch(addUser(res.data));
         toast.success('Profile updated successfully!');
@@ -91,8 +89,7 @@ const EditProfile = ({ userData }) => {
                     "Content-Type": "multipart/form-data" 
                 }
             });
-        // console.log(res);
-
+            
         dispatch(addUser(res.data));
         
     }catch(err){
