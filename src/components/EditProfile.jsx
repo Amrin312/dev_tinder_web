@@ -184,23 +184,29 @@ const EditProfile = ({ userData }) => {
 
                             <input type="file" ref={fileRef} onChange={handleFileUpload} name="file" id="file" className='hidden' />
 
-                            <button className='px-6 py-3 rounded-xl font-semibold
-                       border border-slate-300 dark:border-slate-700
-                       text-slate-900 dark:text-slate-50
-                       hover:bg-slate-100 dark:hover:bg-slate-800 transition flex items-center gap-2' onClick={() => setShowCamera(true)}><Camera /> Take a photo</button>
+                           <button
+                                className='px-6 py-3 rounded-xl font-semibold
+                                border border-slate-300
+                                text-slate-700 hover:text-violet-600
+                                hover:bg-slate-100
+                                transition flex items-center gap-2'
+                                onClick={() => setShowCamera(true)}
+                                >
+                                <Camera /> Take a photo
+                            </button>
 
                         </div>
                         
                         <div className="flex flex-wrap -mx-3 mb-6">
                             <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                                <label className="block tracking-wide text-white text-xs font-bold mb-2" htmlFor="grid-first-name">
+                                <label className="block tracking-wide text-dark text-xs font-bold mb-2" htmlFor="grid-first-name">
                                     First Name
                                 </label>
                                 <input type="text" name="firstName" className="input w-full" value={user.firstName} onChange={handleChange} placeholder="Enter First Name" />
                                 
                             </div>
                             <div className="w-full md:w-1/2 px-3">
-                                <label className="block tracking-wide text-white text-xs font-bold mb-2" htmlFor="grid-last-name">
+                                <label className="block tracking-wide text-dark text-xs font-bold mb-2" htmlFor="grid-last-name">
                                     Last Name
                                 </label>
                                 <input type="text" name="lastName" className="input w-full" value={user.lastName} onChange={handleChange}  placeholder="Enter Last Name" />
@@ -209,14 +215,14 @@ const EditProfile = ({ userData }) => {
 
                         <div className="flex flex-wrap -mx-3 mb-6">
                             <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                                <label className="block tracking-wide text-white text-xs font-bold mb-2" htmlFor="grid-first-name">
+                                <label className="block tracking-wide text-dark text-xs font-bold mb-2" htmlFor="grid-first-name">
                                     Age
                                 </label>
                                 <input type="number" name="age" className="input w-full" value={user.age} onChange={handleChange} placeholder="Enter age" />
                                 
                             </div>
                             <div className="w-full md:w-1/2 px-3">
-                                <label className="block tracking-wide text-white text-xs font-bold mb-2" htmlFor="grid-last-name">
+                                <label className="block tracking-wide text-dark text-xs font-bold mb-2" htmlFor="grid-last-name">
                                     Last Name
                                 </label>
 
@@ -231,7 +237,7 @@ const EditProfile = ({ userData }) => {
 
                         <div className="flex flex-wrap -mx-3 mb-6">
                             <div className="w-full px-3">
-                                <label className="block tracking-wide text-white text-xs font-bold mb-2" htmlFor="grid-password">
+                                <label className="block tracking-wide text-dark text-xs font-bold mb-2" htmlFor="grid-password">
                                     Headline
                                 </label>
                                 <input type="text" name="bio" className="input w-full" value={user.bio} onChange={handleChange} placeholder="Enter Bio" />
@@ -240,7 +246,7 @@ const EditProfile = ({ userData }) => {
 
                         <div className="flex flex-wrap -mx-3 mb-6">
                             <div className="w-full px-3">
-                                <label className="block tracking-wide text-white text-xs font-bold mb-2" htmlFor="grid-password">
+                                <label className="block tracking-wide text-dark text-xs font-bold mb-2" htmlFor="grid-password">
                                     Skills
                                 </label>
                                 <input type="text" name="skills" className="input w-full" value={user.skills} onChange={handleChange} placeholder="React Js, Javascript, Node Js" />
@@ -249,7 +255,7 @@ const EditProfile = ({ userData }) => {
 
                         <div className="flex flex-wrap -mx-3 mb-6">
                             <div className="w-full px-3">
-                                <label className="block tracking-wide text-white text-xs font-bold mb-2" htmlFor="grid-password">
+                                <label className="block tracking-wide text-dark text-xs font-bold mb-2" htmlFor="grid-password">
                                     About
                                 </label>
                                 <textarea name="about" rows="5" className="textarea w-full" value={user.about} onChange={handleChange} placeholder="Enter About"> </textarea>

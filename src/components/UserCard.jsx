@@ -37,7 +37,7 @@ const UserCard = ({ user }) => {
   const defaultAvatar = "https://www.kindpng.com/picc/m/252-2524695_dummy-profile-image-jpg-hd-png-download.png";
 
   return (
-    <div className="card bg-base-300 shadow-sm">
+    <div className="card bg-base-200 shadow-lg border border-gray-200">
 
       <figure>
         <img

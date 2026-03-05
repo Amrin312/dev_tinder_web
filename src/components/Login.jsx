@@ -49,7 +49,7 @@ const Login = () => {
 
   return (
     <div className='flex items-center justify-center mt-8'>
-        <div className="card card-border bg-base-300 w-96">
+        <div className="card card-border bg-base-200 shadow-lg border border-gray-200 w-96">
             <div className="card-body">
                 <h2 className="card-title text-center mx-auto">{loginForm ? 'Login' : 'Sign Up'}</h2>
 
@@ -78,7 +78,7 @@ const Login = () => {
 
                     <fieldset className="fieldset">
                         <legend className="fieldset-legend">Password:</legend>
-                        <input type="text" className="input" value={password} onChange={e => setPassword(e.target.value)}  placeholder="Enter Password" />
+                        <input type="password" className="input" value={password} onChange={e => setPassword(e.target.value)}  placeholder="Enter Password" />
                     </fieldset>
                 </div>
 
