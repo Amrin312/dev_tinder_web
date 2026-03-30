@@ -24,7 +24,7 @@ const Navbar = () => {
     
     
   return (
-    <div className="navbar bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-sm sticky px-50 top-0 z-50">
+    <div className="navbar bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-sm sticky p-1 md:px-50 top-0 z-50">
         <div className="flex-1">
             <Link to={user ? '/feed' : '/'} className="btn btn-ghost text-xl">🧑‍💻 DevTinder</Link>
         </div>
@@ -36,7 +36,7 @@ const Navbar = () => {
                         <Link>Testimonials</Link>
                         <Link>Contact Us</Link> */}
                         {/* <Sun /> */}
-                        <Link to="/login" className='p-2 rounded-xl font-semibold text-white 
+                        <Link to="/login" className='p-2 rounded-xl text-sm md:text-base font-semibold text-white 
                        bg-gradient-to-r from-sky-400 to-violet-500
                        hover:from-sky-500 hover:to-violet-600 transition'>Sign Up / Login</Link>
 
@@ -47,9 +47,9 @@ const Navbar = () => {
             { user && 
             (
             <>
-                <NavLink to="/feed">
-                    <Home size={18} />
-                </NavLink>
+                    {/* <NavLink to="/feed">
+                        <Home size={18} />
+                    </NavLink> */}
 
                 <Bell />
 
@@ -65,10 +65,11 @@ const Navbar = () => {
                 <ul
                     tabIndex="-1"
                     className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                    
+                    <li><Link to='/feed'><Home size={18} /> Feed</Link></li>
+                    <li><Link to="/connections"><Users size={18} />  Connections</Link></li>
+                    <li><Link to="/requests"><UserPlus size={18} /> Requests</Link></li>
                     <li><Link to='/profile'><User size={18} /> Profile</Link></li>
-                    {/* <li><Link to='/feed'><Home size={18} /> Feed</Link></li> */}
-                    {/* <li><Link to="/connections"><Users size={18} />  Connections</Link></li> */}
-                    {/* <li><Link to="/requests"><UserPlus size={18} /> Requests</Link></li> */}
                     <li><a onClick={handleLogout}><LogOut size={18} /> Logout</a></li>
                 </ul>
                 </div>

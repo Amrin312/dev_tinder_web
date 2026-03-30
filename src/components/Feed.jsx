@@ -40,7 +40,7 @@ const Feed = () => {
 
       {/* Main Content */}
       <div className="flex justify-center w-full mt-10">
-        <div className="w-1/3 pb-6">
+        <div className="w-full md:w-1/3 pb-6">
           {feed.length <= 0 ? <h1>No new users found!</h1> : <UserCard user={feed[0]} />}
         </div>
       </div>

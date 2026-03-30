@@ -7,7 +7,7 @@ const Profile = () => {
   const user = useSelector((store) => store.user);
 
   return (
-    <div className='w-full p-10'>
+    <div className='w-full pt-10'>
       {user && <EditProfile userData={user} />}
     </div>
   )
