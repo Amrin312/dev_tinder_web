@@ -24,11 +24,11 @@ const FinalCTA = () => {
         viewport={{ once: true }}
         className="max-w-4xl text-center"
       >
-        <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-slate-50">
+        <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-slate-700">
           Find your next build partner today.
         </h2>
 
-        <p className="mt-5 text-lg text-slate-600 dark:text-slate-300">
+        <p className="mt-5 text-lg text-slate-600 dark:text-slate-500">
           Join thousands of developers collaborating, learning, and shipping real projects together.
         </p>
 

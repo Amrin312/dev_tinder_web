@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react'
 import { BASE_URL } from '../utils/constants';
 import { useDispatch, useSelector } from 'react-redux';
 import { addConnection } from '../utils/connectionsSlice';
+import Sidebar from './Sidebar';
+
 
 const Connections = () => {
 
@@ -30,29 +32,39 @@ const Connections = () => {
     }, []);
 
   return (
-    <div className='flex flex-col justify-center w-full md:w-1/2'>
-        <h1 className='text-white text-2xl text-center mb-4'>Connections</h1>
+    <div className='flex w-full'>
 
-        {
-            connections?.map(connection => {
-                const {firstName, lastName, age, gender, bio, photoUrl, _id} = connection;
-                return (
-                    <div className='flex flex-col md:flex-row items-center gap-6 bg-base-300 rounded-lg m-2 px-6 py-4'  key={_id}>
-                        <div>
-                            <img src={photoUrl || defaultAvatar} className='rounded-full w-20 h-20 ' alt="" />
-                        </div>
+        <div className="hidden sm:block top-16 fixed h-[calc(100vh-4rem)] w-70 bg-white shadow-md">
+            <Sidebar />
+        </div>
 
-                        <div>
-                            <h1 className='text-lg'>{ `${firstName} ${lastName}` }</h1>
-                            { age && gender && <p className='text-base'>{`${age} ${gender}`}</p>}
-                            { bio && <p className='text-base'>{bio}</p>}
+        <div className='flex w-full justify-center md:ml-10 my-5'>
+            <div className='flex flex-col justify-center w-full md:w-1/2'>
+                <h1 className='font-medium text-2xl text-center mb-4'>Connections</h1>
 
-                        </div>
-                    </div>
-                )
-            })
-        }
+                {
+                    connections?.map(connection => {
+                        const {firstName, lastName, age, gender, bio, photoUrl, _id} = connection;
+                        return (
+                            
+                            <div className='flex flex-col md:flex-row items-center bg-white gap-6 shadow-lg rounded-lg m-2 px-6 py-4'  key={_id}>
+                                <div>
+                                    <img src={photoUrl || defaultAvatar} loading="lazy" className='rounded-full w-20 h-20 ' alt="" />
+                                </div>
 
+                                <div>
+                                    <h1 className='text-lg'>{ `${firstName} ${lastName}` }</h1>
+                                    { age && gender && <p className='text-base'>{`${age} ${gender}`}</p>}
+                                    { bio && <p className='text-base'>{bio}</p>}
+
+                                </div>
+                            </div>
+                        )
+                    })
+                }
+
+            </div>
+        </div>
     </div>
   )
 }

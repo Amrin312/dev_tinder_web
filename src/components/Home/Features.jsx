@@ -30,7 +30,7 @@ const Features = () => {
     <section className="py-20 px-4 flex justify-center">
       <div className="max-w-6xl w-full">
 
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-slate-900 dark:text-slate-50">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-slate-900 dark:text-slate-700">
           Built for Developers
         </h2>
 

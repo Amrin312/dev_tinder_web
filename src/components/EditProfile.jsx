@@ -172,7 +172,6 @@ const EditProfile = ({ userData }) => {
                         
                                             </div>
                         
-                                        
                                         </dialog>
                     )}
 
@@ -249,7 +248,11 @@ const EditProfile = ({ userData }) => {
                                 <label className="block tracking-wide text-dark text-xs font-bold mb-2" htmlFor="grid-password">
                                     Skills
                                 </label>
-                                <input type="text" name="skills" className="input w-full" value={user.skills} onChange={handleChange} placeholder="React Js, Javascript, Node Js" />
+                                <div className="flex gap-2">
+                                    <input type="text" name="skills" className="input w-full" value={user.skills} onChange={handleChange} placeholder="React Js, Javascript, Node Js" />
+                                    <button>Add</button>
+
+                                </div>
                             </div>
                         </div>
 

@@ -3,6 +3,8 @@ import React from 'react'
 import { BASE_URL } from '../utils/constants';
 import { useDispatch } from 'react-redux';
 import { removeUserFromFeed } from '../utils/feedSlice';
+import { Heart, X } from 'lucide-react';
+import { div, p } from 'framer-motion/client';
 
 const UserCard = ({ user }) => {
 
@@ -62,27 +64,33 @@ const UserCard = ({ user }) => {
         {bio && <p className="font-medium">{bio}</p>}
 
         {skills && (
-          <p className="text-sm">
-            {Array.isArray(skills) ? skills.join(', ') : skills}
-          </p>
+          <div>
+            <p className='text-base font-medium text-gray-700'>Skills</p>
+            <p className="text-sm">
+              {Array.isArray(skills) ? skills.join(', ') : skills}
+            </p>
+          </div>
         )}
 
-        {about && <p className="text-sm opacity-90">{about}</p>}
+        {about && 
+          <div>
+            <p className='text-base font-medium text-gray-700'>About</p>
+            <p className="text-sm break-words">{about}</p>
+          </div>
+        }
 
         <div className="card-actions justify-center mt-3">
-          <button className="px-6 py-3 rounded-xl font-semibold text-white
-               bg-gradient-to-r from-red-500 to-rose-600
-               hover:from-red-600 hover:to-rose-700
-               transition-all duration-200
+          <button className="p-4 rounded-full bg-white text-red-500
                shadow-md hover:shadow-lg
-               hover:scale-105 active:scale-95" onClick={() => handleRequests('ignored', _id)}>Ignore</button>
+               hover:scale-105 active:scale-95
+               transition-all duration-200" onClick={() => handleRequests('ignored', _id)}><X /></button>
                        
-          <button className="px-6 py-3 rounded-xl font-semibold text-white
-               bg-gradient-to-r from-emerald-400 to-green-600
-               hover:from-emerald-500 hover:to-green-700
-               transition-all duration-200
+          <button className="p-4 rounded-full text-white
+               bg-gradient-to-r from-sky-400 to-violet-500
+               hover:from-sky-500 hover:to-violet-600
                shadow-md hover:shadow-lg
-               hover:scale-105 active:scale-95" onClick={() => handleRequests('interested', _id)}>Interested</button>
+               hover:scale-105 active:scale-95
+               transition-all duration-200" onClick={() => handleRequests('interested', _id)}><Heart /></button>
         </div>
 
       </div>

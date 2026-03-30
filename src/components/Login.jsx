@@ -49,22 +49,24 @@ const Login = () => {
 
   return (
     <div className='flex items-center justify-center mt-8'>
-        <div className="card card-border bg-base-200 shadow-lg border border-gray-200 w-96">
+        <div className="card card-border bg-base-200 shadow-lg border border-gray-200 w-96 rounded-2xl">
             <div className="card-body">
-                <h2 className="card-title text-center mx-auto">{loginForm ? 'Login' : 'Sign Up'}</h2>
+                <h2 className="card-title text-center text-2xl font-medium mx-auto bg-gradient-to-r from-sky-400 to-violet-500 
+                    bg-clip-text text-transparent 
+                    hover:from-sky-500 hover:to-violet-600">{loginForm ? 'Login' : 'Sign Up'}</h2>
 
-                <div>
+                <div className=''>
                     {
                         !loginForm && (
                             <>
                             <fieldset className="fieldset">
                                 <legend className="fieldset-legend">First Name:</legend>
-                                <input type="text" className="input" value={firstName} onChange={e => setFirstName(e.target.value)} placeholder="Enter First Name" />
+                                <input type="text" className="input rounded-xl" value={firstName} onChange={e => setFirstName(e.target.value)} placeholder="Enter First Name" />
                             </fieldset>
 
                             <fieldset className="fieldset">
                                 <legend className="fieldset-legend">Last Name:</legend>
-                                <input type="text" className="input" value={lastName} onChange={e => setLastName(e.target.value)} placeholder="Enter Last Name" />
+                                <input type="text" className="input rounded-xl" value={lastName} onChange={e => setLastName(e.target.value)} placeholder="Enter Last Name" />
                             </fieldset>
                         
                             </>
@@ -73,19 +75,20 @@ const Login = () => {
 
                     <fieldset className="fieldset">
                         <legend className="fieldset-legend">Email:</legend>
-                        <input type="text" className="input" value={email} onChange={e => setEmail(e.target.value)} placeholder="Enter Email" />
+                        <input type="text" className="input rounded-xl" value={email} onChange={e => setEmail(e.target.value)} placeholder="Enter Email" />
                     </fieldset>
 
                     <fieldset className="fieldset">
                         <legend className="fieldset-legend">Password:</legend>
-                        <input type="password" className="input" value={password} onChange={e => setPassword(e.target.value)}  placeholder="Enter Password" />
+                        <input type="password" className="input rounded-xl" value={password} onChange={e => setPassword(e.target.value)}  placeholder="Enter Password" />
                     </fieldset>
                 </div>
 
                 <p className='text-red-400'>{ error }</p>
 
                 <div className="card-actions justify-end mt-3">
-                    <button className="btn btn-primary btn-block" onClick={loginForm ? handleSubmit : handleSignup}>{loginForm ? 'Login' : 'Sign Up'}</button>
+                    <button className="btn text-white btn-block bg-gradient-to-r from-sky-400 to-violet-500 hover:from-sky-500 hover:to-violet-600 font-medium text-medium rounded-xl" onClick={loginForm ? handleSubmit : handleSignup}>{loginForm ? 'Login' : 'Sign Up'}</button>
+
                     <p className='text-center mt-2 cursor-pointer' onClick={() => setLoginForm(value => !value)}>{ loginForm ? 'Create new account' : 'Already have an account Login here!' }</p>
                 </div>
             </div>

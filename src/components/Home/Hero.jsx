@@ -6,14 +6,14 @@ const Hero = () => {
     <section className="w-full flex justify-center px-4 pt-24 pb-16">
       <div className="max-w-6xl text-center">
 
-        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50">
+        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-gray-700 ">
           Connect. Collaborate.{" "}
           <span className="bg-gradient-to-r from-sky-400 to-violet-500 bg-clip-text text-transparent">
             Code Together.
           </span>
         </h1>
 
-        <p className="mt-5 max-w-3xl mx-auto text-lg text-slate-600 dark:text-slate-300">
+        <p className="mt-5 max-w-3xl mx-auto text-lg text-slate-700 dark:text-slate-700">
           DevTinder helps developers find collaborators, co-founders, and project partners 
           based on skills and interests.
         </p>
@@ -33,8 +33,8 @@ const Hero = () => {
             to="/login"
             className="px-6 py-3 rounded-xl font-semibold
                        border border-slate-300 dark:border-slate-700
-                       text-slate-900 dark:text-slate-50
-                       hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+                       text-slate-900 dark:text-slate-700
+                       hover:bg-slate-100 hover:text-white dark:hover:bg-slate-800 transition"
           >
             Explore Developers
           </Link>

@@ -13,7 +13,7 @@ const Workflow = () => {
     <section className="py-24 px-4 flex justify-center">
       <div className="max-w-6xl w-full">
 
-        <h2 className="text-4xl font-bold text-center text-slate-900 dark:text-slate-50">
+        <h2 className="text-4xl font-bold text-center text-slate-900 dark:text-slate-700">
           How DevTinder Works
         </h2>
 
@@ -31,7 +31,7 @@ const Workflow = () => {
                 className="bg-white dark:bg-slate-900 rounded-2xl p-6 shadow-md text-center"
               >
                 <Icon className="w-10 h-10 mx-auto text-blue-600 dark:text-sky-400" />
-                <h3 className="mt-4 text-xl font-semibold">{step.title}</h3>
+                <h3 className="mt-4 text-xl text-white font-semibold">{step.title}</h3>
                 <p className="mt-2 text-slate-600 dark:text-slate-300">
                   {step.desc}
                 </p>
