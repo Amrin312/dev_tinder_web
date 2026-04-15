@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import UserCard from './UserCard';
 import axios from 'axios';
-import { BASE_URL } from '../utils/constants'
+import { BASE_URL, STATIC_BASE_URL } from '../utils/constants'
 import { useDispatch } from 'react-redux';
 import toast from 'react-hot-toast';
 import { addUser } from '../utils/userSlice';
@@ -9,11 +9,14 @@ import Webcam from "react-webcam";
 import ProfileUpload from './ProfileUpload';
 import { Camera } from 'lucide-react';
 import { Upload } from 'lucide-react';
+import { p } from 'framer-motion/client';
 
 const EditProfile = ({ userData }) => {
 
   const dispatch = useDispatch();
   const [userId, setUserId] = useState(null);
+  const[skills, setSkills] = useState('');
+
   const fileRef = useRef(null);
 
   const webcamRef = useRef(null);
@@ -43,23 +46,52 @@ const EditProfile = ({ userData }) => {
             age: userData.age || '',
             gender: userData.gender || '',
             bio: userData.bio || '',
-            skills: userData.skills || '',
+            skills: userData.skills || [],
             about: userData.about || ''
         });
     }
   }, [userData]);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setUser(user => ({ ...user, [name]: value}));
-  };
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setUser(user => ({ ...user, [name]: value}));
+    };
+
+    const handleSkills = (e) => {
+        setSkills(e.target.value)
+    }
+
+    const updateSkill = () => {
+        const trimmedSkill = skills.trim();
+
+        if (!trimmedSkill) return;
+
+        if (user.skills.includes(trimmedSkill)) return;
+
+        setUser(prev => ({
+            ...prev,
+            skills: [...prev.skills, trimmedSkill]
+        }));
+
+        setSkills('');
+    };
+
+    const removeSkill = (skillToRemove) => {
+        setUser(prev => ({
+            ...prev,
+            skills: prev.skills.filter(skill => skill !== skillToRemove)
+        }));
+    };
 
   const handleSubmit = async () => {
 
     try{
         const res =  await axios.patch(`${BASE_URL}/profile/edit/${userId}`, user, { withCredentials: true } );
-        dispatch(addUser(res.data));
+   
+        dispatch(addUser(res.data.data));
+
         toast.success('Profile updated successfully!');
+
     }catch(err){
         console.log(err.message);
     }
@@ -101,7 +133,6 @@ const EditProfile = ({ userData }) => {
   const capturePhoto = async () => {
   const imageSrc = webcamRef.current.getScreenshot();
 
-  // base64 → blob
   const blob = await fetch(imageSrc).then(res => res.blob());
 
   const file = new File([blob], "camera-photo.jpg", { type: "image/jpeg" });
@@ -177,7 +208,7 @@ const EditProfile = ({ userData }) => {
 
                     <div>
                         <div className="flex flex-wrap items-center gap-3 mb-6">
-                            <img src={user.photoUrl ? user.photoUrl : defaultAvatar} className="rounded-full h-30 w-30" alt="profile pic" />
+                            <img src={user.photoUrl ? STATIC_BASE_URL + user.photoUrl : defaultAvatar} className="rounded-full h-30 w-30" alt="profile pic" />
 
                             <button className='px-6 py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-sky-400 to-violet-500 hover:from-sky-500 hover:to-violet-600 transition flex items-center gap-2' onClick={triggerFileUpload}><Upload />Upload Profile</button>
 
@@ -222,7 +253,7 @@ const EditProfile = ({ userData }) => {
                             </div>
                             <div className="w-full md:w-1/2 px-3">
                                 <label className="block tracking-wide text-dark text-xs font-bold mb-2" htmlFor="grid-last-name">
-                                    Last Name
+                                    Gender
                                 </label>
 
                                 <select name="gender" className="select w-full" id="gender" value={user.gender} onChange={handleChange}>
@@ -237,7 +268,7 @@ const EditProfile = ({ userData }) => {
                         <div className="flex flex-wrap -mx-3 mb-6">
                             <div className="w-full px-3">
                                 <label className="block tracking-wide text-dark text-xs font-bold mb-2" htmlFor="grid-password">
-                                    Headline
+                                    Professional Title
                                 </label>
                                 <input type="text" name="bio" className="input w-full" value={user.bio} onChange={handleChange} placeholder="Enter Bio" />
                             </div>
@@ -249,9 +280,25 @@ const EditProfile = ({ userData }) => {
                                     Skills
                                 </label>
                                 <div className="flex gap-2">
-                                    <input type="text" name="skills" className="input w-full" value={user.skills} onChange={handleChange} placeholder="React Js, Javascript, Node Js" />
-                                    <button>Add</button>
+                                    <input type="text" name="skills" className="input w-full" value={skills} onChange={handleSkills} placeholder="React Js, Javascript, Node Js" />
+                                    <button className='btn font-semibold
+                                bg-gradient-to-r from-sky-400 to-violet-500 hover:from-sky-500 hover:to-violet-600 transition text-white' type="button" onClick={updateSkill}>Add Skill</button>
 
+                                </div>
+
+                                <div className='mt-5'>
+                                    {user?.skills?.map((skill, index) => (
+                                        <span key={index} className='p-2 bg-slate-200 border-slate-300 rounded-xl text-violet-600 mr-1 inline-flex items-center gap-2 cursor-pointer'>
+                                        {skill}
+                                        <button
+                                            type="button"
+                                            onClick={() => removeSkill(skill)}
+                                            className="text-red-400 font-bold cursor-pointer"
+                                        >
+                                            ✕
+                                        </button>
+                                        </span>
+                                    ))}
                                 </div>
                             </div>
                         </div>
@@ -259,7 +306,7 @@ const EditProfile = ({ userData }) => {
                         <div className="flex flex-wrap -mx-3 mb-6">
                             <div className="w-full px-3">
                                 <label className="block tracking-wide text-dark text-xs font-bold mb-2" htmlFor="grid-password">
-                                    About
+                                    Short Bio
                                 </label>
                                 <textarea name="about" rows="5" className="textarea w-full" value={user.about} onChange={handleChange} placeholder="Enter About"> </textarea>
                             </div>

@@ -5,17 +5,30 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addRequests, removeRequest } from '../utils/requestSlice';
 import { div } from 'framer-motion/client';
 import Sidebar from './Sidebar';
+import RequestSkeleton from '../skeleton/RequestSkeleton';
 
 const Requests = () => {
+
+    const [loading, setLoading] = useState(true);
+    
     const requests = useSelector(store => store.requests);
     
     const dispatch = useDispatch();
     const defaultAvatar = "https://www.kindpng.com/picc/m/252-2524695_dummy-profile-image-jpg-hd-png-download.png";
 
     const getRequests = async () => {
-        const res = await axios.get(BASE_URL + '/user/requests', { withCredentials: true });
+
+        try{
+            const res = await axios.get(BASE_URL + '/user/requests', { withCredentials: true });
+
+            dispatch(addRequests(res.data.connectionRequests));
+
+        }catch(err){
+            console.log(err.message);
+        }finally{
+            setLoading(false)
+        }
         
-        dispatch(addRequests(res.data.connectionRequests));
     };
 
     const reviewRequest = async (status, _id) => {
@@ -38,21 +51,21 @@ const Requests = () => {
             <Sidebar />
         </div>
 
-        <div className='flex w-full justify-center'>
+        <div className='flex w-full md:ml-20 justify-center'>
             <div className='flex flex-col w-full md:w-1/2 mt-10'>
                 <h1 className='text-gray-800 font-medium text-2xl text-center mb-4'>Requests</h1>
 
                 {
-                    requests.length == 0 && (
+                    loading ? (
+                        <RequestSkeleton />
+                    ) : requests.length == 0 ? (
                         <p className="text-center opacity-60">No requests found!</p>
-                    )
-                }
+                    ):
 
-                {
                     requests?.map(request => {
                         const {firstName, lastName, age, gender, bio, photoUrl, _id} = request.fromId;
                         return (
-                           <div className='flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-xl rounded-lg m-2 px-4 py-4' key={_id}>
+                           <div className='flex flex-col md:flex-row items-center md:items-start md:items-center justify-between gap-4 shadow-xl rounded-lg m-2 px-4 py-4' key={_id}>
     
                                 {/* Avatar */}
                                 <div className="flex-shrink-0">

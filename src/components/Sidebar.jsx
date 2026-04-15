@@ -1,7 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { Home, User, Users, UserPlus } from "lucide-react";
+import { Home, User, Users, UserPlus, MessageSquareMore } from "lucide-react";
+import { STATIC_BASE_URL } from "../utils/constants";
 
 const Sidebar = () => {
   const user = useSelector((state) => state.user);
@@ -23,7 +24,7 @@ const Sidebar = () => {
             alt="User profile"
             className="h-10 w-10 rounded-full"
             src={
-              user.photoUrl ||
+              STATIC_BASE_URL + user.photoUrl ||
               "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
             }
           />
@@ -38,6 +39,13 @@ const Sidebar = () => {
           <NavLink to="/feed" className={linkClass}>
             <Home size={18} />
             Feed
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink to="/chat" className={linkClass}>
+            <MessageSquareMore size={18} />
+            Messages
           </NavLink>
         </li>
 

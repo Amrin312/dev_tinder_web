@@ -29,6 +29,7 @@ const UserCard = ({ user }) => {
       const res = await axios.post(BASE_URL + "/request/send/" + status + '/' + user_id, {}, { withCredentials: true });
   
       dispatch(removeUserFromFeed(user_id));
+      toast.success('Profile updated successfully!');
 
     }catch(err){
       console.log(err.message);
@@ -39,62 +40,80 @@ const UserCard = ({ user }) => {
   const defaultAvatar = "https://www.kindpng.com/picc/m/252-2524695_dummy-profile-image-jpg-hd-png-download.png";
 
   return (
-    <div className="card bg-base-200 shadow-lg border border-gray-200">
+  <div className="rounded-2xl overflow-hidden shadow-md group">
 
-      <figure>
-        <img
-          src={photoUrl || defaultAvatar}
-          alt={`${firstName} avatar`}
-          className="w-full object-cover"
-        />
-      </figure>
+  {/* Image */}
+  <div className="h-[320px] w-full overflow-hidden">
+    <img
+      src={photoUrl || defaultAvatar}
+      alt="user"
+      className="w-full h-full object-cover 
+      transition duration-300 group-hover:scale-105"
+    />
+  </div>
 
-      <div className="card-body">
+  {/* Bottom Content */}
+  <div className="bg-white p-4">
 
-        <h2 className="card-title">
-          {firstName} {lastName}
-        </h2>
-
-        {gender && age && (
-          <p className="text-sm opacity-80">
-            {age} • {gender}
-          </p>
-        )}
-
-        {bio && <p className="font-medium">{bio}</p>}
-
-        {skills && (
-          <div>
-            <p className='text-base font-medium text-gray-700'>Skills</p>
-            <p className="text-sm">
-              {Array.isArray(skills) ? skills.join(', ') : skills}
-            </p>
-          </div>
-        )}
-
-        {about && 
-          <div>
-            <p className='text-base font-medium text-gray-700'>About</p>
-            <p className="text-sm break-words">{about}</p>
-          </div>
-        }
-
-        <div className="card-actions justify-center mt-3">
-          <button className="p-4 rounded-full bg-white text-red-500
-               shadow-md hover:shadow-lg
-               hover:scale-105 active:scale-95
-               transition-all duration-200" onClick={() => handleRequests('ignored', _id)}><X /></button>
-                       
-          <button className="p-4 rounded-full text-white
-               bg-gradient-to-r from-sky-400 to-violet-500
-               hover:from-sky-500 hover:to-violet-600
-               shadow-md hover:shadow-lg
-               hover:scale-105 active:scale-95
-               transition-all duration-200" onClick={() => handleRequests('interested', _id)}><Heart /></button>
-        </div>
-
-      </div>
+    <div className="bottom-4 left-4 mb-2">
+      <h2 className="text-xl font-bold">
+        {firstName} {lastName}
+      </h2>
+      <p className="text-sm text-gray-500">
+        {bio || "Fullstack Developer"}
+      </p>
     </div>
+
+
+
+    {/* Skills */}
+    {skills && (
+      <div className="flex flex-wrap gap-2 my-3">
+        {skills.slice(0, 4).map((skill, index) => (
+          <span
+            key={index}
+            className="text-xs px-3 py-1 bg-gradient-to-r from-sky-100 to-violet-100 text-gray-700 rounded-full"
+          >
+            {skill}
+          </span>
+        ))}
+      </div>
+    )}
+
+        {/* About */}
+    {about && (
+      <p className="text-sm text-gray-600 line-clamp-2">
+        {about}
+      </p>
+    )}
+
+    {/* Actions */}
+    <div className="flex justify-center gap-5 items-center mt-4">
+
+      <button
+        onClick={() => handleRequests('ignored', _id)}
+        className="p-4 rounded-full bg-white text-red-500
+               shadow-md hover:shadow-lg
+               hover:scale-105 active:scale-95
+               transition-all duration-200"
+      >
+        <X size={18} />
+      </button>
+
+      <button
+        onClick={() => handleRequests('interested', _id)}
+        className="p-4 rounded-full text-white text-sm font-medium
+        bg-gradient-to-r from-sky-400 to-violet-500
+        shadow-md hover:shadow-lg hover:scale-105 transition"
+      >
+        <Heart />
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
   )
 }
 

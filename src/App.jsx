@@ -12,6 +12,7 @@ const Home = React.lazy(() => import("./pages/Home"))
 import toast, { Toaster } from 'react-hot-toast'
 import CardSkeleton from "./skeleton/CardSkeleton"
 import RequestSkeleton from "./skeleton/RequestSkeleton"
+import Chat from "./pages/Chat"
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
               <Route path="/feed" element={<Suspense fallback={<CardSkeleton />}><Feed /></Suspense>} />
               <Route path="/connections" element={<Suspense fallback={<RequestSkeleton  />}><Connections /></Suspense>} />
               <Route path="/requests" element={<Suspense fallback={<RequestSkeleton />}><Requests /></Suspense>} />
+              <Route path="/chat/:targetUserId?" element={<Suspense fallback={<CardSkeleton />}><Chat /></Suspense>} />
 
             </Route>
           </Routes>

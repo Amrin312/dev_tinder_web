@@ -2,9 +2,9 @@ import axios from 'axios';
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { BASE_URL } from '../utils/constants';
+import { BASE_URL, STATIC_BASE_URL } from '../utils/constants';
 import { removeUser } from '../utils/userSlice';
-import { Sun, Moon, LayoutList, Bell, User, Home, Users, UserPlus, LogOut } from "lucide-react";
+import { Sun, Moon, LayoutList, Bell, User, Home, Users, UserPlus, LogOut, MessageCircle } from "lucide-react";
 
 const Navbar = () => {
     const user = useSelector(state => state.user);
@@ -24,9 +24,9 @@ const Navbar = () => {
     
     
   return (
-    <div className="navbar bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-sm sticky p-1 md:px-50 top-0 z-50">
+    <div className="navbar bg-white backdrop-blur-md border-b border-gray-200 shadow-sm sticky p-1 md:px-50 top-0 z-50">
         <div className="flex-1">
-            <Link to={user ? '/feed' : '/'} className="btn btn-ghost text-xl">🧑‍💻 DevTinder</Link>
+            <Link to={user ? '/feed' : '/'} className="btn btn-ghost text-base md:text-xl">🧑‍💻 DevTinder</Link>
         </div>
         <div className="flex gap-5 items-center mx-4">
             {
@@ -47,11 +47,12 @@ const Navbar = () => {
             { user && 
             (
             <>
-                    {/* <NavLink to="/feed">
-                        <Home size={18} />
-                    </NavLink> */}
 
-                <Bell />
+                {/* <Bell /> */}
+
+                <NavLink to="/chat">
+                    <MessageCircle size={24} strokeWidth={2.2} />
+                </NavLink>
 
                 {/* <p>{ user.firstName }</p> */}
                 <div className="dropdown dropdown-end">
@@ -59,8 +60,9 @@ const Navbar = () => {
                     <div className="w-10 rounded-full">
                     <img
                         alt="User profile"
-                        src={user.photoUrl ? user.photoUrl : "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"} />
+                        src={user.photoUrl ? STATIC_BASE_URL + user.photoUrl : "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"} />
                     </div>
+                    
                 </div>
                 <ul
                     tabIndex="-1"

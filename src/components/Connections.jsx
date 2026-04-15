@@ -4,9 +4,13 @@ import { BASE_URL } from '../utils/constants';
 import { useDispatch, useSelector } from 'react-redux';
 import { addConnection } from '../utils/connectionsSlice';
 import Sidebar from './Sidebar';
+import { Link } from 'react-router-dom';
+import RequestSkeleton from '../skeleton/RequestSkeleton';
 
 
 const Connections = () => {
+
+    const [loading, setLoading] = useState(true);
 
     const connections = useSelector(store => store.connections);
 
@@ -22,6 +26,8 @@ const Connections = () => {
             
         }catch(err){
             console.log(err.message);
+        }finally {
+            setLoading(false);
         }
     }
 
@@ -43,20 +49,31 @@ const Connections = () => {
                 <h1 className='font-medium text-2xl text-center mb-4'>Connections</h1>
 
                 {
-                    connections?.map(connection => {
+                        loading ? (
+                            <RequestSkeleton />
+                        ) : connections.length <= 0 ? (
+                            <h1 className='text-center'>You don't have a connections!</h1>
+                          ):
+                          connections?.map(connection => {
                         const {firstName, lastName, age, gender, bio, photoUrl, _id} = connection;
                         return (
                             
-                            <div className='flex flex-col md:flex-row items-center bg-white gap-6 shadow-lg rounded-lg m-2 px-6 py-4'  key={_id}>
-                                <div>
-                                    <img src={photoUrl || defaultAvatar} loading="lazy" className='rounded-full w-20 h-20 ' alt="" />
+                            <div className='flex flex-col md:flex-row justify-between items-center bg-white gap-6 shadow-lg rounded-lg m-2 px-6 py-4'  key={_id}>
+                                <div className='flex gap-4'>
+                                    <div>
+                                        <img src={photoUrl || defaultAvatar} loading="lazy" className='rounded-full w-20 h-20 ' alt="" />
+                                    </div>
+
+                                    <div>
+                                        <h1 className='text-lg font-medium'>{ `${firstName} ${lastName}` }</h1>
+                                        {/* { age && gender && <p className='text-base text-gray-600'>{`${age} ${gender}`}</p>} */}
+                                        { bio && <p className='text-base text-gray-600'>{bio}</p>}
+
+                                    </div>
                                 </div>
 
                                 <div>
-                                    <h1 className='text-lg'>{ `${firstName} ${lastName}` }</h1>
-                                    { age && gender && <p className='text-base'>{`${age} ${gender}`}</p>}
-                                    { bio && <p className='text-base'>{bio}</p>}
-
+                                    <Link to={`/chat/${_id}`}> <button type='button' className='btn bg-blue-600 text-white'>Message</button> </Link>
                                 </div>
                             </div>
                         )

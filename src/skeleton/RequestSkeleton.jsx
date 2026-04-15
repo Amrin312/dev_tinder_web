@@ -8,7 +8,7 @@ const RequestSkeleton = () => {
         {[...Array(5)].map((_, i) => (
           <div
             key={i}
-            className="flex items-center justify-between bg-white rounded-lg shadow p-4 mb-4 animate-pulse"
+            className="flex flex-col md:flex-row items-center justify-between bg-white rounded-lg shadow p-4 mb-4 animate-pulse"
           >
             {/* Left section */}
             <div className="flex items-center gap-3">
