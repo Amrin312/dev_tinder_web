@@ -42,7 +42,7 @@ Backend: https://github.com/Amrin312/devTinder
 
 🏗️ **Tech Stack**
 
-**Frontend: **
+**Frontend:**
 React.js,
 Redux Toolkit,
 Tailwind CSS / DaisyUI,
