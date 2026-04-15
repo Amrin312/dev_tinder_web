@@ -64,7 +64,7 @@ npm install
 
 Create .env file:
 
-.env file
+**.env file**
 
 PORT=7777
 
@@ -87,22 +87,35 @@ npm run dev
 📸 **Screenshots**
 
 🔹 Home Page
+
 <img width="1897" height="870" alt="image" src="https://github.com/user-attachments/assets/778c2b44-0945-4a81-a95d-a9d8abc61a24" />
 
+
 🔹 Login / Signup
+
 <img width="1918" height="867" alt="image" src="https://github.com/user-attachments/assets/91021474-0837-43c7-8d4a-d52006fe2b0c" />
 
+
 🔹 Feed Page
+
 <img width="1902" height="892" alt="image" src="https://github.com/user-attachments/assets/41d48370-71b6-43dc-b454-cbf809f36b5f" />
 
+
 🔹 Chat Interface
+
 <img width="1900" height="863" alt="image" src="https://github.com/user-attachments/assets/1afefb19-8c98-4294-a314-36781d3dbd7a" />
 
+
 🔹 Request Page
+
 <img width="1918" height="868" alt="image" src="https://github.com/user-attachments/assets/9967a008-139e-453a-b3f5-787b58fc751a" />
 
+
 🔹 Connections Page
+
 <img width="1900" height="863" alt="image" src="https://github.com/user-attachments/assets/b723add6-dc4f-4537-bc06-ce1cd5e1a040" />
 
+
 🔹 Profile Page
+
 <img width="1900" height="868" alt="image" src="https://github.com/user-attachments/assets/8b1a5aae-706b-43b4-b317-b92479a30dc2" />
