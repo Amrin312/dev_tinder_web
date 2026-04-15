@@ -21,13 +21,21 @@ Backend: https://github.com/Amrin312/devTinder
 🧠 **Features**
 
 🔐 Secure Authentication using JWT (Login / Signup)
+
 👤 Dynamic User Profile Management
+
 🤝 Connection System (Send, Accept, Reject Requests)
+
 💬 Real-time Chat Functionality (WebSocket-ready / scalable)
+
 🧭 Personalized Developer Feed
+
 🚫 Route Protection with Middleware & Token Validation
+
 📸 Image Upload with Server-side Storage
+
 📷 Camera API Integration for real-time profile photo capture
+
 ⚡ Fully Responsive UI across devices
 
 ---
