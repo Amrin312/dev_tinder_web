@@ -42,17 +42,17 @@ Backend: https://github.com/Amrin312/devTinder
 
 🏗️ **Tech Stack**
 
-**Frontend**
-React.js
-Redux Toolkit
-Tailwind CSS / DaisyUI
+**Frontend: **
+React.js,
+Redux Toolkit,
+Tailwind CSS / DaisyUI,
 Axios
 
-**Backend**
-Node.js
-Express.js
-MongoDB
-Mongoose
+**Backend:**
+Node.js,
+Express.js,
+MongoDB,
+Mongoose,
 JWT Authentication
 
 ---
