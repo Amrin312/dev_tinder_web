@@ -13,6 +13,7 @@ DevTinder is a fullstack web application that helps developers connect, match, a
 📂 **Repositories**
 
 Frontend: https://github.com/Amrin312/dev_tinder_web
+
 Backend: https://github.com/Amrin312/devTinder
 
 ---
@@ -20,7 +21,6 @@ Backend: https://github.com/Amrin312/devTinder
 🧠 **Features**
 
 🔐 Secure Authentication using JWT (Login / Signup)
-
 👤 Dynamic User Profile Management
 🤝 Connection System (Send, Accept, Reject Requests)
 💬 Real-time Chat Functionality (WebSocket-ready / scalable)
