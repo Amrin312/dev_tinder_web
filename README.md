@@ -13,6 +13,7 @@ DevTinder is a fullstack web application that helps developers connect, match, a
 📂 **Repositories**
 
 Frontend: https://github.com/Amrin312/dev_tinder_web
+
 Backend: https://github.com/Amrin312/devTinder
 
 ---
@@ -53,16 +54,22 @@ JWT Authentication
 
 1️⃣ Clone Repositories
 git clone https://github.com/Amrin312/dev_tinder_web
+
 git clone https://github.com/Amrin312/devTinder
 
 2️⃣ Setup Backend
 cd devTinder
+
 npm install
+
 Create .env file:
 
 .env file
+
 PORT=7777
+
 MONGO_URI=your_mongodb_connection
+
 JWT_SECRET=your_secret_key
 
 Run server: npm start
@@ -70,7 +77,9 @@ Run server: npm start
 3️⃣ Setup Frontend
 
 cd dev_tinder_web
+
 npm install
+
 npm run dev
 
 ---
