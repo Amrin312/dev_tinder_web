@@ -106,17 +106,17 @@ npm run dev
 
 🔹 Feed Page
 
-<img width="1902" height="892" alt="image" src="https://github.com/user-attachments/assets/41d48370-71b6-43dc-b454-cbf809f36b5f" />
+<img width="1902" height="872" alt="image" src="https://github.com/user-attachments/assets/0d9095d2-3241-483f-b2de-19e4c615518c" />
 
 
 🔹 Chat Interface
 
-<img width="1900" height="863" alt="image" src="https://github.com/user-attachments/assets/1afefb19-8c98-4294-a314-36781d3dbd7a" />
+<img width="1905" height="870" alt="image" src="https://github.com/user-attachments/assets/86c9e6b0-0505-47cc-a07e-e8966f99a635" />
 
 
 🔹 Request Page
 
-<img width="1918" height="868" alt="image" src="https://github.com/user-attachments/assets/9967a008-139e-453a-b3f5-787b58fc751a" />
+<img width="1915" height="867" alt="image" src="https://github.com/user-attachments/assets/4d7cc81a-d59d-4be2-ae1a-12839ad20ea0" />
 
 
 🔹 Connections Page
@@ -126,4 +126,5 @@ npm run dev
 
 🔹 Profile Page
 
-<img width="1900" height="868" alt="image" src="https://github.com/user-attachments/assets/8b1a5aae-706b-43b4-b317-b92479a30dc2" />
+<img width="1903" height="875" alt="image" src="https://github.com/user-attachments/assets/fecbf42e-7d35-448a-a7ff-04167227d18f" />
+
